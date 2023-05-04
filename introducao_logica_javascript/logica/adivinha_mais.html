@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+
+<input/><button>Chutar!</button>
+
+<script> 
+
+	function sorteia() {
+
+		return Math.round( Math.random() * 10 );
+	}
+
+	function sorteiaNumeros(quantia) {
+
+		var segredos = [];
+
+		var numero = 1
+
+		while (numero <= quantia) {
+
+			var numeroAleatorio = sorteia();
+			var achou = false;
+
+			if( numeroAleatorio !== 0 ) {
+				for(var i = 0; i < segredos.length; i++) {
+					if(segredos[i] == numeroAleatorio) {
+						achou = true;
+						break;
+					}
+				}
+
+				if(achou == false) {
+				segredos.push( numeroAleatorio );
+				numero++;
+				}
+			}
+
+		}
+
+
+
+		return segredos;
+	}
+
+	var segredos = sorteiaNumeros(4);
+	console.log(segredos);
+	
+
+
+
+	var input = document.querySelector("input");
+	input.focus();
+
+	function verifica() {
+
+		var acertou = false;
+
+		for(var i = 0; i < segredos.length; i++) {
+
+			if( input.value == segredos[i] ) {
+			alert("Parabéns! Você acertou!");
+			acertou = true;
+			break;
+			}
+		}
+
+		if(acertou == false) {
+			alert("Que pena, você errou.");
+		}
+
+			input.value = "";
+			input.focus();
+	}
+
+	var button = document.querySelector("button");
+	button.onclick = verifica;
+
+</script>

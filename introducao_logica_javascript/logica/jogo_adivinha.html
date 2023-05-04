@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    function sorteia(n) {
+        /*Aqui eu utilizo parseInt() pra garantir que o valor gerado pelo Math.random() seja interpretado como um número, Math.round() pra garantir que o número gerado por Math.random() seja um número inteiro e '* n' pra que o número esteja entre 0 e n. */
+        return(parseInt(Math.round(Math.random() * n)));
+    }
+
+    function tentaNovamente() {
+        if(chute > numeroPensado) {
+        chute = parseInt(prompt("Você errou. O número pensado é menor que " + chute + ". Tente novamente."));
+        } else {
+            chute = parseInt(prompt("Você errou. O número pensado é maior que " + chute + ". Tente novamente."));
+        }
+
+        if(chute == numeroPensado) {
+            mostra("Você acertou! O número pensado realmente era " + numeroPensado + ".");
+        } else {
+            if(chute != chute) {
+                mostra("Você não digitou um valor válido. Recarregue a página para jogar de novo.");
+            } else {
+            tentaNovamente();
+            }
+        }
+    }
+
+    var numeroPensado = sorteia(10);
+        //console.log(numeroPensado) lança um registro no console do navegador do valor atribuído à variável numeroPensado.
+    console.log(numeroPensado);
+
+    var chute = parseInt(prompt("Adivinhe em qual número eu estou pensando."));
+
+    if(chute == numeroPensado) {
+
+        mostra("Você acertou! O número pensado realmente era " + numeroPensado + ".");
+    } else {
+        if(chute != chute) {
+                mostra("Você não digitou um valor válido. Recarregue a página para jogar de novo.");
+            } else {
+            tentaNovamente();
+            }
+    }
+
+</script>

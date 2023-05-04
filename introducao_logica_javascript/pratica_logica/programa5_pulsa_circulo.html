@@ -1,0 +1,80 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var raioInicial = 5;
+    var raio = raioInicial;
+    var sentido = 1;
+
+    var xAlvo;
+    var yAlvo;
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function dispara(evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+       // lógica de acerto?
+        if (x > xAlvo - raio 
+            && x < xAlvo + raio 
+            && y > yAlvo - raio 
+            && y < yAlvo + raio) {
+            
+            alert("Acertou!");
+        }
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+
+    }
+
+    function sorteiaPosicao(maximo) {
+
+        return Math.floor( Math.random() * maximo + raio + 20);
+    }
+
+    function atualizaTela() {
+
+        if(raio > raioInicial * 3) {
+            sentido = -1;
+        } else if (raio < raioInicial) {
+            sentido = 1;
+        }
+
+        limpaTela();
+
+        desenhaCirculo(xAlvo, yAlvo, raio * 3, 'red'); // maior círculo
+        desenhaCirculo(xAlvo, yAlvo, raio * 2, 'white');
+        desenhaCirculo(xAlvo, yAlvo, raio, 'red'); // menor circulo
+
+        raio = raio + sentido;
+
+    }
+
+    function moveAlvo() {
+        xAlvo = sorteiaPosicao(540);
+        yAlvo = sorteiaPosicao(340);
+    }
+
+    setInterval(atualizaTela, 25);
+    setInterval(moveAlvo, 1000);
+    tela.onclick = dispara;
+
+    
+</script>

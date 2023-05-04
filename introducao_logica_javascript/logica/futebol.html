@@ -1,0 +1,38 @@
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+/* Eu uso a função parseInt() aqui porque o retorno da função prompt() é sempre uma string, o que significa que ele é interpretado como texto pelo javascript e acaba gerando uma concatenação, e eu quero trabalhar com o valor numérico desse retorno e não o textual.
+*/
+    var vitorias = parseInt(prompt("Qual é o número de vitórias do seu time?"));
+    var empates = parseInt(prompt("Qual é o número de empates do seu time?"));
+    var pontos = vitorias * 3 + empates;
+
+//  A função if() {} só executa o conteúdo do seu bloco, {}, se a expressão 
+// dentro do seu argumento, (), for verdadeira, true. Se for falsa, false, 
+// nada acontece.
+
+    if(pontos > 129) {
+
+    mostra("O seu time tem " + pontos + " pontos atualmente e está melhor do que no ano passado.");
+    }
+
+    if(pontos == 129) {
+
+        mostra("O seu time tem " + pontos + " pontos atualmente e está o mesmo do que no ano passado.");
+    }
+
+    if(pontos < 129) {
+
+        mostra("O seu time tem " + pontos + " pontos atualmente e está pior do que no ano passado.");
+    }
+
+</script>

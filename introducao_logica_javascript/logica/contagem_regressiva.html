@@ -1,0 +1,25 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    function mostraContagemRegressiva(limiteBaixo, limiteAlto) {
+        while(contador <= limiteAlto && contador >= limiteBaixo) {
+            mostra(contador);
+            contador = contador - 1;
+        }
+    }
+    var contador = 20;
+
+    mostraContagemRegressiva(0, 20);
+
+    mostra("FIM");
+</script>

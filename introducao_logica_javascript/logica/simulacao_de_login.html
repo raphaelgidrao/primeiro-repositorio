@@ -1,0 +1,39 @@
+<meta charset="UTF-8">
+<script>
+
+    function tentaLogar() {
+        if( loginCadastrado == loginInformado && senhaCadastrada == senhaInformada ) {
+
+        alert("Bem-vindo ao sistema, " + loginInformado + ".");
+    } else {
+
+        tentaLogarNovamente();
+        }
+    }
+
+    function tentaLogarNovamente() {
+
+        if(tentativas > 0) {
+        tentativas = tentativas - 1;
+        alert("Login ou senha inválidos. Tente novamente. (Tentativas restantes: " + (tentativas + 1) + ")");
+        
+            loginInformado = prompt("Informe seu login");
+            senhaInformada = prompt("Informe sua senha");
+            
+            tentaLogar();
+        } else {
+            alert("Login ou senha inválidos. Acesso negado. Sem tentativas restantes.");
+        }
+    }
+
+    var loginCadastrado = "alura";
+    var senhaCadastrada = "alura321";
+
+    var loginInformado = prompt("Informe seu login");
+    var senhaInformada = prompt("Informe sua senha");
+
+    var tentativas = parseInt(3);
+
+    tentaLogar();
+
+</script>

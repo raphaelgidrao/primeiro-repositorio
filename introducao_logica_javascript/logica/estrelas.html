@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+    for (var linha = 0; linha < 3; linha++) {
+        for(var estrelas = 0; estrelas < 10; estrelas++) {
+            document.write("*");
+        }
+        pulaLinha();
+    }
+
+</script>

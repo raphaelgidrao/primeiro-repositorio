@@ -1,0 +1,24 @@
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var limite = parseInt(prompt("Digite o ano atual."));
+    var limiteFim = parseInt(limite) - 4;
+    var anoCopa = 1930;
+
+    document.write("Teve copa nos anos de " + anoCopa);
+    while(anoCopa <= limiteFim) {
+        document.write(", " + anoCopa);
+        anoCopa = anoCopa + 4;
+    }
+
+    mostra(" e " + anoCopa + ".");
+</script>
